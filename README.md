@@ -16,3 +16,5 @@ the registration page (for patient)
 * Document Print
 * Smart search
 * Registration wizard for patient
+
+> I'm using the dummy data
