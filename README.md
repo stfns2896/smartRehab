@@ -17,4 +17,4 @@ the registration page (for patient)
 * Smart search
 * Registration wizard for patient
 
-> I'm using the dummy data
+> I'm using dummy data
