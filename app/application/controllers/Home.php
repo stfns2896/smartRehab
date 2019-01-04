@@ -116,6 +116,45 @@ class Home extends CI_Controller {
 			echo "email salah";
 		}
 	}
+	public function data_pimpinan(){
+		$id=$this->input->post('id');
+		$nama=$this->input->post('nama');
+		$nip=$this->input->post('nip');
+		$jabatan=$this->input->post('jabatan');
+
+		$data=array('id'=>$id,'nama'=>$nama,'nip'=>$nip,'jabatan'=>$jabatan);
+
+		if ($this->db->update('pimpinan',$data)) {
+			echo "ok";
+		}
+	}
+	public function ubah_nip(){
+		$username=$this->session->userdata('username');
+		$nip=$this->input->post('nip');
+		$data=array('nip'=>$nip);
+		$this->db->where(array('username'=>$username));
+		if ($this->db->update('pengguna',$data)) {
+			echo "ok";
+		}
+	}
+	public function narkoba(){
+		if ($this->input->post('edit')=='true') {
+			$id_jenis_narkoba=$this->input->post('id_jenis_narkoba');
+			$nama_narkoba=$this->input->post('nama_narkoba');
+			$data=array('nama_narkoba'=>$nama_narkoba);
+			$this->db->where(array('id_jenis_narkoba'=>$id_jenis_narkoba));
+			if ($this->db->update('jenis_narkoba',$data)) {
+				echo "ok";
+			}
+		}else{
+			$nama_narkoba=$this->input->post('nama_narkoba');
+			$data=array('nama_narkoba'=>$nama_narkoba);
+			$this->db->insert('jenis_narkoba',$data);
+			if ($this->db->affected_rows() > 0) {
+				echo "ok";
+			}
+		}
+	}
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect('masuk');
