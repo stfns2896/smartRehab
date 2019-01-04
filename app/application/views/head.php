@@ -34,16 +34,6 @@
                 </div>
                 <div class="navbar">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="notif-button">
-                                    <span class="badge" id="notif-count"></span>
-                                    <i class="ti-bell"></i>
-                                    <p>Notifikasi</p>
-                                    <b class="caret"></b>
-
-                              </a>
-                              <ul class="dropdown-menu" id="notif-messages"></ul>
-                        </li>
                         <?php if ($this->session->userdata('tipe')=='0') {?>
                         <li>
                             <a data-toggle="modal" data-backdrop="static" href="#buat-akun">
@@ -51,18 +41,51 @@
                                 <p>Tambah User</p>
                             </a>
                         </li>
-                        <?php } ?>
+                    <?php } ?>
                         <li>
-                              <a data-toggle="modal" data-placement="auto" title="Ganti Password" data-backdrop="static" href="#ganti-password">
-                                <i class="fas fa-key"></i>
-                                <p>Ganti Password</p>
-                              </a>
+                          <a data-toggle="modal" data-placement="auto" title="Ganti Password" data-backdrop="static" href="#ganti-password">
+                            <i class="fas fa-key"></i>
+                            <p>Ganti Password</p>
+                          </a>
                         </li>
                         <li>
                             <a data-toggle="tooltip" data-placement="auto" title="Logout" href="#" onclick="logout()">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <p>Logout</p>
                               </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar">
+                    <ul class="nav navbar-nav">
+                        <li>
+                              <a data-toggle="modal" data-placement="auto" href="<?php echo base_url(); ?>">
+                                <i class="fas fa-home"></i>
+                                <p>Dashboard</p>
+                              </a>
+                        </li>
+                        
+                        <li>
+                              <a data-toggle="modal" data-placement="auto" title="Ubah Data Pimpinan" data-backdrop="static" href="#data-pimpinan">
+                                <i class="fas fa-user-tie"></i>
+                                <p>Ubah data Pimpinan</p>
+                              </a>
+                        </li>
+                        <li>
+                              <a data-toggle="modal" data-placement="auto" title="Ubah NIP" data-backdrop="static" href="#ubah-nip">
+                                <i class="fas fa-id-card"></i>
+                                <p>Ganti NIP</p>
+                              </a>
+                        </li>
+                        <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="notif-button">
+                                <span class="badge" id="notif-count"></span>
+                                <i class="ti-bell"></i>
+                                <p>Notifikasi</p>
+                                <b class="caret"></b>
+
+                          </a>
+                          <ul class="dropdown-menu" id="notif-messages"></ul>
                         </li>
                     </ul>
                 </div>

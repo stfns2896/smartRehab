@@ -22,8 +22,17 @@ class Pasien extends CI_Controller {
 		$id_pasien = $this->security->xss_clean($id_pasien);
 		$title='Data Pasien > Ubah Data Pasien '.$id_pasien;
 		$pasien_narkoba=$this->M_Pasien->pasien_narkoba($id_pasien);
+		$nip = $this->M_Pasien->dashboard()['nip'];
+		$pimpinan = $this->M_Pasien->dashboard()['pimpinan'];
+
 		$this->load->view('head',array('title'=>$title));
-		$this->load->view('pasien-detail',array('data'=>array('pasien'=>$this->M_Pasien->pasien($id_pasien),'atribut'=>$this->M_Pasien->semua_atribut(),'pasien_narkoba'=>$pasien_narkoba)));
+		$this->load->view('pasien-detail',array('data'=>array(
+			'pasien'=>$this->M_Pasien->pasien($id_pasien),
+			'atribut'=>$this->M_Pasien->semua_atribut(),
+			'pasien_narkoba'=>$pasien_narkoba,
+			'nip'=>$nip,
+			'pimpinan'=>$pimpinan
+		)));
 		$this->load->view('footer');
 		if ($this->input->post('btn-verifikasi-pasien')=='verifikasi') {
 			if ($this->M_Pasien->verifikasi($id_pasien)) {
@@ -58,8 +67,8 @@ class Pasien extends CI_Controller {
 	                'id_sumber_pasien'=>$this->input->post('sumber_pasien'),
 	                'id_sumber_biaya'=>$this->input->post('sumber_biaya'),
 	                'no_rekam_medis'=>$this->input->post('no_rekam_medis'),
-	                'mulai_pakai'=>date_format(date_create_from_format('d/m/Y',$this->input->post('mulai_pakai')),'Y/m/d'),
-	                'terakhir_pakai'=>date_format(date_create_from_format('d/m/Y',$this->input->post('terakhir_pakai')),'Y/m/d'),
+	                'mulai_pakai'=>$this->input->post('mulai_pakai'),
+	                'terakhir_pakai'=>$this->input->post('terakhir_pakai'),
 	                'cara_pakai'=>$this->input->post('cara_pakai'),
 	                'frekuensi'=>$this->input->post('frekuensi'),
 	                'pernah_rehabilitasi'=>$this->input->post('rehabilitasi'),

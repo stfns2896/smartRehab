@@ -28,130 +28,130 @@ $(document).ready(function(){
 
     // Code for the Validator
 
-    var $validator = $('.wizard-card form').validate({
-		  rules: {
-            fullname:{
-                required: true,
-                minlength: 2
-            },
-		    email: {
-    		    minlength: 3,
-                email:true
-		    },
-            no_telp:{
-                minlength: 7,
-                tel: true
-            },
-            jenis_kelamin:{
-                required: true
-            },
-            tempat_lahir:{
-                required: true,
-                minlength: 3
-            },
-            tgl_lahir:{
-                required: true
-            },
-            alamat:{
-                required: true,
-                minlength: 5
-            },
-            provinsi:{
-                required: true
-            },
-            no_identitas:{
-                required: true,
-                minlength: 12,
-                number: true
-            },
-            agama:{
-                required: true
-            },
-            suku:{
-                required: true,
-                minlength: 4
-            },
-            pend_terakhir:{
-                required: true
-            },
-            pekerjaan:{
-                required: true,
-                minlength: 4
-            },
-            telp_keluarga:{
-                required: true,
-                tel: true,
-                minlength: 7
-            },
-            tipe_identitas:{
-                required: true
-            },
-            menikah:{
-                required :true
-            },
-            nama_pasangan:{
-                required : function(element) {
-                    return ($("#menikah").val() == "1");
-                }
-            },
-            nama_ayah:{
-                required :true
-            },
-            nama_ibu:{
-                required :true
-            },
-            alamat_keluarga:{
-                minlength :5
-            },
-            mulai_pakai:{
-                required :true,
-            },
-            jenis_narkoba:{
-                required :true,
-            },
-            cara_pakai:{
-                required :true,
-            },
-            frekuensi:{
-                required :true,
-            },
-            terakhir_pakai:{
-                required :true,
-            },
-            sumber_biaya:{
-                required :true,
-            },
-            sumber_pasien:{
-                required :true,
-            },
-            rehabilitasi:{
-                required :true,
-            },
-            tempat_rehab:{
-                required : function(element) {
-                    return ($("#rehabilitasi").val() == "1");
-                }
-            },
-            rawat:{
-                required : function(element) {
-                    return ($("#rehabilitasi").val() == "1");
-                }
-            },
-            lama_rawat:{
-                required : function(element) {
-                    return ($("#rehabilitasi").val() == "1");
-                }
-            },
-        },
-        messages:{
+ //    var $validator = $('.wizard-card form').validate({
+	// 	  rules: {
+ //            fullname:{
+ //                required: true,
+ //                minlength: 2
+ //            },
+	// 	    email: {
+ //    		    minlength: 3,
+ //                email:true
+	// 	    },
+ //            no_telp:{
+ //                minlength: 7,
+ //                tel: true
+ //            },
+ //            jenis_kelamin:{
+ //                required: true
+ //            },
+ //            tempat_lahir:{
+ //                required: true,
+ //                minlength: 3
+ //            },
+ //            tgl_lahir:{
+ //                required: true
+ //            },
+ //            alamat:{
+ //                required: true,
+ //                minlength: 5
+ //            },
+ //            provinsi:{
+ //                required: true
+ //            },
+ //            no_identitas:{
+ //                required: true,
+ //                minlength: 12,
+ //                number: true
+ //            },
+ //            agama:{
+ //                required: true
+ //            },
+ //            suku:{
+ //                required: true,
+ //                minlength: 4
+ //            },
+ //            pend_terakhir:{
+ //                required: true
+ //            },
+ //            pekerjaan:{
+ //                required: true,
+ //                minlength: 4
+ //            },
+ //            telp_keluarga:{
+ //                required: true,
+ //                tel: true,
+ //                minlength: 7
+ //            },
+ //            tipe_identitas:{
+ //                required: true
+ //            },
+ //            menikah:{
+ //                required :true
+ //            },
+ //            nama_pasangan:{
+ //                required : function(element) {
+ //                    return ($("#menikah").val() == "1");
+ //                }
+ //            },
+ //            nama_ayah:{
+ //                required :true
+ //            },
+ //            nama_ibu:{
+ //                required :true
+ //            },
+ //            alamat_keluarga:{
+ //                minlength :5
+ //            },
+ //            mulai_pakai:{
+ //                required :true,
+ //            },
+ //            jenis_narkoba:{
+ //                required :true,
+ //            },
+ //            cara_pakai:{
+ //                required :true,
+ //            },
+ //            frekuensi:{
+ //                required :true,
+ //            },
+ //            terakhir_pakai:{
+ //                required :true,
+ //            },
+ //            sumber_biaya:{
+ //                required :true,
+ //            },
+ //            sumber_pasien:{
+ //                required :true,
+ //            },
+ //            rehabilitasi:{
+ //                required :true,
+ //            },
+ //            tempat_rehab:{
+ //                required : function(element) {
+ //                    return ($("#rehabilitasi").val() == "1");
+ //                }
+ //            },
+ //            rawat:{
+ //                required : function(element) {
+ //                    return ($("#rehabilitasi").val() == "1");
+ //                }
+ //            },
+ //            lama_rawat:{
+ //                required : function(element) {
+ //                    return ($("#rehabilitasi").val() == "1");
+ //                }
+ //            },
+ //        },
+ //        messages:{
             
-        }
-        // errorPlacement: function(error, element) {
-        //     $(element).parent('div').addClass('has-error');
-        //     console.debug(error["0"].innerHTML);
-        //     $(element).parent('div').append("<p class='form-error'></p>");
-        //  }
-	});
+ //        }
+ //        // errorPlacement: function(error, element) {
+ //        //     $(element).parent('div').addClass('has-error');
+ //        //     console.debug(error["0"].innerHTML);
+ //        //     $(element).parent('div').append("<p class='form-error'></p>");
+ //        //  }
+	// });
 
     // Wizard Initialization
   	$('.wizard-card').bootstrapWizard({
