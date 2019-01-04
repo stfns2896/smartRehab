@@ -61,7 +61,6 @@ $konseling=$konseling['konseling'];
                                             <a class="btn btn-sm btn-primary btn-icon" data-toggle="modal" data-backdrop="static" href="#ubah-konseling" data-id_pasien="<?php echo $key['id_pasien']; ?>" data-konseling_ke="<?php echo $key['konseling_ke']; ?>" data-id_konseling="<?php echo $key['id_konseling']; ?>" data-masalah_motivasi="<?php echo $key['masalah_motivasi']; ?>" data-hal_yg_menghambat_penyelesaian="<?php echo $key['hal_yg_menghambat_penyelesaian']; ?>" data-hal_yg_mendukung_penyelesaian="<?php echo $key['hal_yg_mendukung_penyelesaian']; ?>" data-rencana_tindak_lanjut="<?php echo $key['rencana_tindak_lanjut']; ?>">
                                                 <i class="far fa-edit"></i>
                                             </a>
-                                            <!-- <button name="hapus_konseling" type="submit" value="<?php// echo $key['id_konseling'] ?>" class="btn btn-sm btn-primary btn-icon"><i class="fas fa-trash"></i></button> -->
                                         </div>
                                         <?php }}
                                         echo form_close();

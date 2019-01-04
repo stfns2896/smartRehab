@@ -18,7 +18,7 @@
 		<link href="<?php echo base_url('/assets/css'); ?>/bootstrap.min.css" rel="stylesheet" />
 		<link href="<?php echo base_url('/assets/css'); ?>/material-bootstrap-wizard.css" rel="stylesheet" />
 		<link rel="stylesheet" href="<?php echo base_url('/assets/css'); ?>/bootstrap-datepicker.standalone.min.css" />
-		<link rel="stylesheet" href="<?php echo base_url('/assets/css'); ?>/bootstrap-select.css">
+		<link rel="stylesheet" href="<?php echo base_url('/assets/css'); ?>/select2.min.css">
 		<!-- CSS Just for demo purpose, don't include it in your project -->
 		<link href="<?php echo base_url('/assets/css'); ?>/form-pasien.css" rel="stylesheet" />
 		
@@ -30,6 +30,7 @@
 		$sumber_biaya=$data['sumber_biaya'];
 		$sumber_pasien=$data['sumber_pasien'];
 		$narkoba=$data['narkoba'];
+		$frekuensi=$data['frekuensi'];
 		?>
 		<div class="image-container set-full-height" style="background-image: url('<?php echo base_url('/assets/img'); ?>/slide2.png')">
 			<!--   Creative Tim Branding   -->
@@ -269,7 +270,7 @@
 												<div class="col-sm-6">
 													<div class="form-group label-floating">
 														<label class="control-label">Mulai Pakai</label>
-														<input class="form-control" name="mulai_pakai" id="mulai_pakai" type="text" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-start-date="-20y" data-date-end-date="d">
+														<input class="form-control" name="mulai_pakai" id="mulai_pakai" type="text">
 													</div>
 													<div class="form-group label-floating">
 														<label class="control-label">Cara Pakai</label>
@@ -277,11 +278,20 @@
 													</div>
 													<div class="form-group label-floating">
 														<label class="control-label">Frekuensi</label>
-														<input class="form-control" name="frekuensi" id="frekuensi" type="text">
+														<select class="form-control" name="frekuensi" id="frekuensi" style="width: 100%">
+															<option selected="" disabled=""></option>
+															<?php
+																foreach ($frekuensi as $key) {
+															?>
+															<option value="<?php echo $key['keterangan']; ?>"><?php echo $key['keterangan']; ?></option>
+															<?php
+																}
+															?>
+														</select>
 													</div>
 													<div class="form-group label-floating">
 														<label class="control-label">Terakhir Pakai</label>
-														<input class="form-control" name="terakhir_pakai" id="terakhir_pakai" type="text" data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-start-date="-20y" data-date-end-date="d">
+														<input class="form-control" name="terakhir_pakai" id="terakhir_pakai" type="text">
 													</div>
 													<div class="form-group label-floating">
 														<label class="control-label">Sumber Biaya</label>
@@ -303,7 +313,7 @@
 													</div>
 													<div class="form-group label-floating">
 														<label class="control-label">Jenis Narkoba</label>
-														<select class="selectpicker" name="jenis_narkoba[]" id="jenis_narkoba[]" data-style="btn-danger" data-title="Jenis Narkoba" data-live-search="true" multiple>
+														<select name="jenis_narkoba[]" id="jenis_narkoba" class="form-control" style="width: 100%" multiple="multiple">
 															<?php foreach($narkoba as $key){ ?>
 															<option value="<?php echo $key['id_jenis_narkoba']; ?>"><?php echo $key['nama_narkoba']; ?></option>
 															<?php } ?>
@@ -348,7 +358,7 @@
 									<div class="pull-right">
 										<input type='button' class='btn btn-next btn-fill btn-success btn-wd' name='next' value='Next' />
 										<!--  -->
-										<input type='submit' id="btn_selesai" style="visibility: hidden" class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Finish'/>
+										<input type='submit' id="btn_selesai" class='btn btn-finish btn-fill btn-success btn-wd' name='finish' value='Finish'/>
 									</div>
 									<div class="pull-left">
 										<input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
@@ -368,18 +378,36 @@
 					</div>
 				</div>
 			</body>
-			<!--   Core JS Files   -->
-			<script src='https://www.google.com/recaptcha/api.js'></script>
+
 			<script src="<?php echo base_url('/assets/js'); ?>/jquery-2.2.4.min.js" type="text/javascript"></script>
 			<script src="<?php echo base_url('/assets/js'); ?>/bootstrap.min.js" type="text/javascript"></script>
 			<script src="<?php echo base_url('/assets/js'); ?>/jquery.bootstrap.js" type="text/javascript"></script>
-			<!--  Plugin for the Wizard -->
+
 			<script src="<?php echo base_url('/assets/js'); ?>/material-bootstrap-wizard.js"></script>
-			<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
+
 			<script src="<?php echo base_url('/assets/js'); ?>/jquery.validate.js"></script>
 			<script src="<?php echo base_url('/assets/js'); ?>/bootstrap-datepicker.min.js"></script>
-			<script src="<?php echo base_url('/assets/js'); ?>/bootstrap-select.min.js"></script>
+			<script src="<?php echo base_url('/assets/js'); ?>/select2.min.js"></script>
 			<script>
+			$(document).ready(function(){
+				$('#provinsi').select2({
+					placeholder: "Provinsi"
+				});
+				$('#jenis_narkoba').select2({
+					placeholder: "Jenis Narkoba",
+					tags: true
+				});
+				$('#frekuensi').select2({
+					placeholder: "Frekuensi",
+					tags: true
+				});
+			});
+
+			$('#jenis_narkoba,#frekuensi').change(function(){
+				console.log($('#jenis_narkoba').val());
+				console.log($('#frekuensi').val());
+			});
+
 			$("#jenis_kelamin").change(function(){
 				if ($('#jenis_kelamin').val()=="2") {
 					$('#icon-gender').removeClass('fa-venus-mars');

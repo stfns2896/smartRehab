@@ -856,19 +856,12 @@ REHABILITASI NARKOTIKA</span></b></p>
   text-align:center;line-height:normal'><span style='font-family:"Arial",sans-serif'>Mengetahui,</span></p>
   </td>
  </tr>
- <tr style='height:12.5pt'>
-  <td width=233 valign=top style='width:174.8pt;border:solid white 1.0pt;
-  border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.5pt'>
-  <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
-  text-align:center;line-height:normal'><span style='font-family:"Arial",sans-serif'>Kabid/Kasi</span></p>
-  </td>
- </tr>
+ <?php $pimpinan = $data['pimpinan']; ?>
  <tr style='height:13.25pt'>
   <td width=233 valign=top style='width:174.8pt;border:solid white 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:13.25pt'>
   <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
-  text-align:center;line-height:normal'><span style='font-family:"Arial",sans-serif'>Pemberdayaan
-  Masyarakat</span></p>
+  text-align:center;line-height:normal'><span style='font-family:"Arial",sans-serif'><?php echo $pimpinan['jabatan']; ?></span></p>
   </td>
  </tr>
  <tr style='height:59.35pt'>
@@ -881,14 +874,14 @@ REHABILITASI NARKOTIKA</span></b></p>
   <p class=MsoNormal align=center style='margin-bottom:0cm;margin-bottom:.0001pt;
   text-align:center;line-height:normal'><span style='font-family:"Arial",sans-serif'>&nbsp;</span></p>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-family:"Arial",sans-serif'>__________________________</span></p>
+  normal;text-align:center'><span style='font-family:"Arial",sans-serif'><?php echo $pimpinan['nama']; ?></span></p>
   </td>
  </tr>
  <tr style='height:12.5pt'>
   <td width=233 valign=top style='width:174.8pt;border:solid white 1.0pt;
   border-top:none;padding:0cm 5.4pt 0cm 5.4pt;height:12.5pt'>
   <p class=MsoNormal style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
-  normal'><span style='font-family:"Arial",sans-serif'>NIP.</span></p>
+  normal';text-align:center><span style='font-family:"Arial",sans-serif'>NIP. <?php echo $pimpinan['nip']; ?></span></p>
   </td>
  </tr>
 </table>

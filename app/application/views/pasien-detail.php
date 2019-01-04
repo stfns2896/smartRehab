@@ -58,7 +58,7 @@ $pasien_narkoba=$data['pasien_narkoba'];
                                 <div class="col-sm-5 col-xs-6">
                                     <div class="form-group label-floating">
                                         <label class="control-label">Tanggal Lahir</label>
-                                        <input class="form-control" name="tgl_lahir" id="tgl_lahir" type="text" value="<?php echo date_format(date_create($pasien['tgl_lahir']),'d/m/Y'); ?>">
+                                        <input class="form-control" name="tgl_lahir" id="tgl_lahir" type="text" value="<?php echo date_format(date_create($pasien['tgl_lahir']), 'd/m/Y'); ?>">
                                     </div>
                                 </div>
                                 <div class="col-sm-7 col-sm-offset-1 col-xs-7">
@@ -72,9 +72,11 @@ $pasien_narkoba=$data['pasien_narkoba'];
                                         <label class="control-label">Provinsi</label>
                                         <select class="form-control valid" name="provinsi" id="provinsi" aria-invalid="false">
                                             <option disabled="" selected=""></option>
-                                            <?php foreach ($provinsi as $key) { ?>
+                                            <?php foreach ($provinsi as $key) {
+    ?>
                                             <option value="<?php echo $key['id_provinsi']; ?>"><?php echo $key['nama_provinsi']; ?></option>
-                                            <?php } ?>
+                                            <?php
+} ?>
                                         </select>
                                         <script> $("#provinsi > [value='<?php echo $pasien['id_provinsi']; ?>']").attr("selected","selected"); </script>
                                         <span class="material-input"></span>
@@ -96,9 +98,11 @@ $pasien_narkoba=$data['pasien_narkoba'];
                                             <label class="control-label">Agama</label>
                                             <select class="form-control" name="agama" id="agama">
                                                 <option selected="" disabled=""></option>
-                                                <?php foreach ($agama as $key) {?>
+                                                <?php foreach ($agama as $key) {
+        ?>
                                                 <option value="<?php echo $key['id_agama']; ?>"><?php echo $key['nama_agama']; ?></option>
-                                                <?php } ?>
+                                                <?php
+    } ?>
                                             </select>
                                             <script> $("#agama > [value='<?php echo $pasien['id_agama']; ?>']").attr("selected","selected"); </script>
                                         </div>
@@ -191,7 +195,11 @@ $pasien_narkoba=$data['pasien_narkoba'];
                                     <div class="col-sm-6">
                                         <div class="form-group label-floating">
                                             <label class="control-label">Mulai Pakai</label>
-                                            <input class="form-control" name="mulai_pakai" id="mulai_pakai" type="text" value="<?php echo date_format(date_create($pasien['mulai_pakai']),'d/m/Y'); ?>">
+                                            <input class="form-control" name="mulai_pakai" id="mulai_pakai" type="text" value="<?php
+                                                // $date = date_create($pasien['mulai_pakai']);
+                                                // echo date_format($date, 'd/m/Y');
+                                                echo $pasien['mulai_pakai'];
+                                            ?>">
                                         </div>
                                         <div class="form-group label-floating">
                                             <label class="control-label">Cara Pakai</label>
@@ -203,15 +211,21 @@ $pasien_narkoba=$data['pasien_narkoba'];
                                         </div>
                                         <div class="form-group label-floating">
                                             <label class="control-label">Terakhir Pakai</label>
-                                            <input class="form-control" name="terakhir_pakai" id="terakhir_pakai" type="text" value="<?php echo date_format(date_create($pasien['terakhir_pakai']),'d/m/Y'); ?>">
+                                            <input class="form-control" name="terakhir_pakai" id="terakhir_pakai" type="text" value="
+                                            <?php
+                                                // echo date_format(date_create($pasien['terakhir_pakai']), 'd/m/Y');
+                                                echo $pasien['terakhir_pakai'];
+                                            ?>">
                                         </div>
                                         <div class="form-group label-floating">
                                             <label class="control-label">Sumber Biaya</label>
                                             <select class="form-control" name="sumber_biaya" id="sumber_biaya">
                                                 <option selected="" disabled=""></option>
-                                                <?php foreach ($sumber_biaya as $key) {?>
+                                                <?php foreach ($sumber_biaya as $key) {
+                                                ?>
                                                 <option value="<?php echo $key['id_sumber_biaya']; ?>"><?php echo $key['keterangan'] ?></option>
-                                                <?php } ?>
+                                                <?php
+                                            } ?>
                                             </select>
                                             <script> $("#sumber_biaya > [value='<?php echo $pasien['id_sumber_biaya']; ?>']").attr("selected","selected"); </script>
                                         </div>
@@ -219,9 +233,11 @@ $pasien_narkoba=$data['pasien_narkoba'];
                                             <label class="control-label">Sumber Pasien</label>
                                             <select class="form-control" name="sumber_pasien" id="sumber_pasien">
                                                 <option selected="" disabled=""></option>
-                                                <?php foreach ($sumber_pasien as $key) {?>
+                                                <?php foreach ($sumber_pasien as $key) {
+                                                ?>
                                                 <option value="<?php echo $key['id_sumber_pasien']; ?>"><?php echo $key['keterangan']; ?></option>
-                                                <?php } ?>
+                                                <?php
+                                            } ?>
                                             </select>
                                             <script> $("#sumber_pasien > [value='<?php echo $pasien['id_sumber_pasien']; ?>']").attr("selected","selected"); </script>
                                         </div>
@@ -260,11 +276,15 @@ $pasien_narkoba=$data['pasien_narkoba'];
                                         <div class="form-group">
                                             <label class="control-label">Jenis Narkoba</label>
                                             <select class="selectpicker" name="jenis_narkoba[]" data-size="2" id="jenis_narkoba" data-style="btn btn-danger" data-title="Jenis Narkoba" data-live-search="true" data-dropup-auto="false"  multiple>
-                                                <?php foreach($narkoba as $key){ ?>
+                                                <?php foreach ($narkoba as $key) {
+                                                ?>
                                                 <option value="<?php echo $key['id_jenis_narkoba']; ?>"><?php echo $key['nama_narkoba']; ?></option>
-                                                <?php } ?>
+                                                <?php
+                                            } ?>
                                             </select>
-                                            <script> $('.selectpicker').selectpicker('val', [<?php foreach ($pasien_narkoba as $pn) {echo "'".$pn['id_jenis_narkoba']."',";} ?>]); </script>
+                                            <script> $('.selectpicker').selectpicker('val', [<?php foreach ($pasien_narkoba as $pn) {
+                                                echo "'".$pn['id_jenis_narkoba']."',";
+                                            } ?>]); </script>
                                         </div>
                                     </div>
                                 </div>
@@ -273,10 +293,12 @@ $pasien_narkoba=$data['pasien_narkoba'];
                     </div>
                     <div class="text-center">
                         <button type="submit" name="btn-ubah-pasien" value="ubah" class="btn btn-primary btn-fill btn-wd" role="button">SIMPAN</button>
-                        <?php if($pasien['sudah_verifikasi']==0){ ?>
+                        <?php if ($pasien['sudah_verifikasi']==0) {
+                                                ?>
                         <input type="hidden" value="sudah" name="verifikasi">
                         <button type="submit" name="btn-verifikasi-pasien" value="verifikasi" class="btn btn-warning btn-fill btn-wd" role="button">VERIFIKASI</button>
-                        <?php } ?>
+                        <?php
+                                            } ?>
                     </div>
                     </div>
                     </form>
