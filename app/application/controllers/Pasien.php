@@ -22,8 +22,17 @@ class Pasien extends CI_Controller {
 		$id_pasien = $this->security->xss_clean($id_pasien);
 		$title='Data Pasien > Ubah Data Pasien '.$id_pasien;
 		$pasien_narkoba=$this->M_Pasien->pasien_narkoba($id_pasien);
+		$nip = $this->M_Pasien->dashboard()['nip'];
+		$pimpinan = $this->M_Pasien->dashboard()['pimpinan'];
+
 		$this->load->view('head',array('title'=>$title));
-		$this->load->view('pasien-detail',array('data'=>array('pasien'=>$this->M_Pasien->pasien($id_pasien),'atribut'=>$this->M_Pasien->semua_atribut(),'pasien_narkoba'=>$pasien_narkoba)));
+		$this->load->view('pasien-detail',array('data'=>array(
+			'pasien'=>$this->M_Pasien->pasien($id_pasien),
+			'atribut'=>$this->M_Pasien->semua_atribut(),
+			'pasien_narkoba'=>$pasien_narkoba,
+			'nip'=>$nip,
+			'pimpinan'=>$pimpinan
+		)));
 		$this->load->view('footer');
 		if ($this->input->post('btn-verifikasi-pasien')=='verifikasi') {
 			if ($this->M_Pasien->verifikasi($id_pasien)) {

@@ -23,7 +23,16 @@ class M_Pasien extends CI_Model {
 		$nip=$this->db->query("SELECT nip FROM pengguna WHERE username='$username'")->row_array()['nip'];
 		$narkoba=$this->db->get('jenis_narkoba')->result_array();
 
-		return array('banyak_pasien'=>$banyak_pasien,'banyak_pasien_konseling'=>$banyak_pasien_konseling,'datang_bulan_ini'=>$datang_bulan_ini,'verifikasi_bulan_ini'=>$verifikasi_bulan_ini,'pasien'=>$pasien,'narkoba'=>$narkoba,'pimpinan'=>$pimpinan,'nip'=>$nip);
+		return array(
+			'banyak_pasien'=>$banyak_pasien,
+			'banyak_pasien_konseling'=>$banyak_pasien_konseling,
+			'datang_bulan_ini'=>$datang_bulan_ini,
+			'verifikasi_bulan_ini'=>$verifikasi_bulan_ini,
+			'pasien'=>$pasien,
+			'narkoba'=>$narkoba,
+			'pimpinan'=>$pimpinan,
+			'nip'=>$nip
+		);
 	}
 	public function semua_atribut(){
 		$atribut;
