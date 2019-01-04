@@ -372,6 +372,39 @@ if(!empty($data['pimpinan'])){
                 }
             });
     }
+
+    function hapusNarkoba(id){
+
+        if(confirm('Anda yakin menghapus jenis narkoba ini dari database?')){
+            var stopNarkoba = $("[name='stopNarkoba']").val();
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url()."home/hapus_narkoba/"; ?>',
+                cache: false,
+                data: {
+                    id_jenis_narkoba: id,
+                    stopNarkoba: stopNarkoba
+                },
+                success: function(msg) {
+                    if (msg == 'ok') {
+                        $('.modal-body').css('opacity', '');
+                        $('#status-ubah-narkoba').html('<span class="alert alert-success">Jenis narkoba berhasil dihapus</span>');
+                        location.reload(true);
+
+                    } else {
+                        $('#status-ubah-narkoba').html('<span class="alert alert-danger">' + msg + '</span>');
+                        $('.modal-body').css('opacity', '');
+                        location.reload(true);
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(xhr.responseText);
+                    console.log(thrownError);
+                }
+            });
+        }
+    }
 </script>
 <script>
 // Untuk mengambil data dari button untuk memunculkan modal ubah data konseling

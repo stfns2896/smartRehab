@@ -185,17 +185,22 @@
                                             </tr>
                                         </thead>
                                         <tbody id="tabel-pasien">
-                                            <?php foreach($data['pasien'] as $p){?>
+                                            <?php foreach ($data['pasien'] as $p) {
+    ?>
                                             <tr>
                                                 <td><?php echo $p['id']; ?></td>
-                                                <td><?php echo $p['nama']; ?> <?php if($p['notif_status']==0){ ?><span class="label label-primary">Pendaftar Baru</span><?php } ?> <?php if($p['sudah_verifikasi']==0){ ?><span class="label label-warning">Belum Verifikasi</span><?php } ?> </td>
+                                                <td><?php echo $p['nama']; ?> <?php if ($p['notif_status']==0) {
+        ?><span class="label label-primary">Pendaftar Baru</span><?php
+    } ?> <?php if ($p['sudah_verifikasi']==0) {
+        ?><span class="label label-warning">Belum Verifikasi</span><?php
+    } ?> </td>
                                                 <td><?php echo $p['jenis_kelamin']; ?></td>
                                                 <td><?php echo $p['pernah_rehabilitasi']==1 ? "Pernah":"Belum"; ?></td>
-                                                <td><?php echo date_format(date_create($p['tgl_lahir']),'d/m/Y'); ?></td>
+                                                <td><?php echo date_format(date_create($p['tgl_lahir']), 'd/m/Y'); ?></td>
                                                 <td><?php echo $p['tempat_lahir']; ?></td>
                                                 <td><?php echo $p['nama_provinsi']; ?></td>
                                                 <td><?php echo $p['nama_agama']; ?></td>
-                                                <td><?php echo date('n')<date('n',strtotime($p['tgl_lahir']))?date('Y')-date('Y',strtotime($p['tgl_lahir']))-1:date('Y')-date('Y',strtotime($p['tgl_lahir'])); ?></td>
+                                                <td><?php echo date('n')<date('n', strtotime($p['tgl_lahir']))?date('Y')-date('Y', strtotime($p['tgl_lahir']))-1:date('Y')-date('Y', strtotime($p['tgl_lahir'])); ?></td>
                                                 <td><?php echo $p['goldar']; ?></td>
                                                 <td><?php echo $p['pekerjaan']; ?></td>
                                                 <td><?php echo $p['suku']; ?></td>
@@ -218,7 +223,8 @@
                                                     </td>
                                                 </div>
                                             </tr>
-                                            <?php } ?>
+                                            <?php
+} ?>
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -273,15 +279,28 @@
                                         </thead>
                                         <tbody>
                                             <?php foreach ($data['narkoba'] as $key) {
-                                                # code...
-                                             ?>
+        ?>
                                             <tr>
                                                 <td><?php echo $key['nama_narkoba']; ?></td>
-                                                <td><a data-toggle="modal" data-placement="auto" title="Ubah Narkoba" data-backdrop="static" href="#ubah-narkoba" data-id_jenis_narkoba="<?php echo $key['id_jenis_narkoba']; ?>" data-nama_narkoba="<?php echo $key['nama_narkoba']; ?>" data-edit="true">
-                                <i class="fas fa-pencil-alt"></i>
-                              </a></td>
+                                                <td><a data-toggle="modal" data-placement="auto" 
+                                                title="Ubah Narkoba" data-backdrop="static" 
+                                                href="#ubah-narkoba" 
+                                                data-id_jenis_narkoba="<?php echo $key['id_jenis_narkoba']; ?>" 
+                                                data-nama_narkoba="<?php echo $key['nama_narkoba']; ?>"
+                                                data-edit="true">
+                                                
+                                                <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                                <a href="#" 
+                                                    title="Hapus Narkoba"
+                                                    onclick="hapusNarkoba(<?php echo $key['id_jenis_narkoba']; ?>)"
+                                                >
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                                </td>
                                             </tr>
-                                            <?php } ?>
+                                            <?php
+    } ?>
                                         </tbody>
                                     </table>
                                 </div>
